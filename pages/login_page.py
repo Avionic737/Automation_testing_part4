@@ -1,5 +1,3 @@
-from lib2to3.pgen2 import driver
-
 from .base_page import BasePage
 from .locators import LoginPageLocators
 
@@ -10,11 +8,10 @@ class LoginPage(BasePage):
         self.should_be_login_form()
         self.should_be_register_form()
 
-
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        current_url = driver.current_url
-        assert "login" in current_url, f"Expected 'login' in URL, but got '{current_url}'"
+        url = self.browser.current_url
+        assert "login" in url, "Expected 'login' in URL, but got '{url}'"
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
