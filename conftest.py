@@ -11,11 +11,14 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="function")
 def browser(request):
     language = request.config.getoption("language")
+
     print(f"\nstart browser for test with language: {language}..")
 
     # Опции браузера для установки языка
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': language})
+    # options.add_argument('headless')  # для запуска безоконного режима
+    options.add_argument('window-size=1920x935')  # размер окна
 
     browser = webdriver.Chrome(options=options)
     yield browser
