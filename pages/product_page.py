@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
-
+from selenium.common.exceptions import TimeoutException
 
 class ProductPage(BasePage):
 

@@ -1,6 +1,6 @@
 import pytest
 from Automation_testing_part4.pages.product_page import ProductPage
-
+from selenium.common.exceptions import TimeoutException
 
 @pytest.mark.parametrize('promo_offer', ["0", "1", "2", "3", "4", "5", "6",
                                          pytest.param("7", marks=pytest.mark.xfail), "8", "9"])
