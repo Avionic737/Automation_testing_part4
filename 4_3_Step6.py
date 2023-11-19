@@ -1,6 +1,5 @@
 from Automation_testing_part4.pages.locators import ProductPageLocators
 from Automation_testing_part4.pages.product_page import ProductPage
-from selenium.common.exceptions import TimeoutException
 
 link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
 
