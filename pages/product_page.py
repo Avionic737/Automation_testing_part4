@@ -23,3 +23,7 @@ class ProductPage(BasePage):
         basket_total_message = self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_MESSAGE).text
         assert product_price == basket_total_message, f"Product price '{product_price}' " \
                                                       f"not found in basket total message '{basket_total_message}'"
+
+    def should_not_be_added_to_basket_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
+            "Success message is present, but it should not be"
