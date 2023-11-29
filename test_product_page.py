@@ -7,6 +7,7 @@ from .pages.product_page import ProductPage
 import time
 
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('promo_offer', ["0", "1", "2", "3", "4", "5", "6",
                                          pytest.param("7", marks=pytest.mark.xfail), "8", "9"])
 def test_guest_can_add_product_to_basket(browser, promo_offer):
@@ -29,6 +30,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link2)
     page.open()
@@ -36,6 +38,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, link2)
     page.open()
@@ -82,17 +85,11 @@ class TestUserAddToBasketFromProductPage:
         email = str(time.time()) + "@fakemail.org"
         password = "testpassword123"
         login_page.register_new_user(email, password)
-        print("User should be authorized:", page.is_authorized_user())
         login_page.should_be_authorized_user()
         self.email = email
         self.password = password
 
-    def test_user_cant_see_success_message(self, browser):
-        page = ProductPage(browser, link2)
-        page.open()
-        assert page.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
-            "Success message is present, but it should not be"
-
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, link2)
         page.open()
@@ -100,5 +97,12 @@ class TestUserAddToBasketFromProductPage:
         page.add_to_basket()
         page.should_be_added_to_basket_message(product_name)
         page.should_be_basket_total_price(product_price)
+
+    def test_user_cant_see_success_message(self, browser):
+        page = ProductPage(browser, link2)
+        page.open()
+        page.should_not_be_added_to_basket_message()
+        assert page.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
+            "Success message is present, but it should not be"
 
 # pytest -s -m test_user test_product_page.py
