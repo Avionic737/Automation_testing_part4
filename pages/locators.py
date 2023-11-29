@@ -9,10 +9,6 @@ class BasePageLocators:
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
-class MainPageLocators:
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-
-
 class LoginPageLocators:
     REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form.well")
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form.well")
@@ -20,6 +16,10 @@ class LoginPageLocators:
     REGISTRATION_PASSWORD1 = (By.CSS_SELECTOR, "#id_registration-password1.form-control")
     REGISTRATION_PASSWORD2 = (By.CSS_SELECTOR, "#id_registration-password2.form-control")
     REGISTRATION_BUTTON = (By.CSS_SELECTOR, 'button[name="registration_submit"][value="Register"]')
+
+
+class MainPageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 
 class ProductPageLocators:
