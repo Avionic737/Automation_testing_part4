@@ -102,7 +102,5 @@ class TestUserAddToBasketFromProductPage:
         page = ProductPage(browser, link2)
         page.open()
         page.should_not_be_added_to_basket_message()
-        assert page.is_not_element_present(*ProductPageLocators.ADDED_TO_BASKET_MESSAGE), \
-            "Success message is present, but it should not be"
 
-# pytest -s -m test_user test_product_page.py
+# pytest -v --tb=line --language=en -m need_review
