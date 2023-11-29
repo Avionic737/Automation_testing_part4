@@ -14,11 +14,11 @@ def browser(request):
 
     print(f"\nstart browser for test with language: {language}..")
 
-    # Опции браузера для установки языка
+    # Browser options for language settings
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': language})
-    # options.add_argument('headless')  # для запуска безоконного режима
-    options.add_argument('window-size=1920x935')  # размер окна
+    # options.add_argument('headless')  # for headless
+    # options.add_argument('window-size=1920x935')  # window size
 
     browser = webdriver.Chrome(options=options)
     yield browser
